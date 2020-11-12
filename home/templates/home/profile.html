@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{%block body%}
+
+{% if user.is_authenticated %}
+
+<div class="container">
+    {% if user.last_name == '0' %}
+        <div class="card">
+            <div class="card-header">
+                <h1> {{user.first_name}} Hospital</h1>
+            </div>
+            <div class="card-body container">
+                <h3> Registration ID:  {{user.username}} </h2>
+                <h3>E-Mail : {{user.email}}</h2>
+                {% for i in hosuser %}
+                    {% if user.id == i.user_id %}
+                    <h3> City:  {{i.city|title}} </h2>
+                    <h3>State : {{i.state}}</h2>
+                    {% endif%}
+                {% endfor %}
+            </div>
+        </div>
+    {% elif user.last_name == '1' %}
+        <div class="card">
+            <div class="card-header">
+                <h1> {{user.first_name}}</h1>
+            </div>
+            <div class="card-body container">
+                <h3> Registration ID:  {{user.username}} </h2>
+                <h3>E-Mail : {{user.email}}</h2>
+                {% for i in plasmauser %}
+                    {% if user.id == i.user_id %}
+                    <h3> City:  {{i.city|title}} </h2>
+                    <h3>State : {{i.state}}</h2>
+                    {% endif%}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% endif %}
+{%endblock%}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.csshttps://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Feedback</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark text-center" style= "background-color: transparent; margin-bottom: 15px;">
+        <a class="navbar-brand" href="/" style="color: white;">Plasma Donation System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/" style="color: white;">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home" style="color: white;">Main</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+                        style="color: white;">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class=" row text-center" style="background-color: rgba(0, 0, 0, 0.5);">
+            <div class="col-6 container">
+                <h1 class="my-3 text-white" style="font-weight: bold;">Hospital's Feedback</h1>
+                {% for i in hos_feed %}
+                    {% if plasma_id == i.plasma_bank.id %}
+                        <div class="card my-3 mx-3">
+                            <div class="card-header" style="font-weight: bold;">{{i.ftitle|title}}</div>
+                            <div class="card-body">
+                                <p>Rating : {{i.review}}</p>
+                                <p>Feedback : {{i.feedback}}</p>
+                                <p>Hospital ID :{{i.hospital}} </p>
+                                <p>Submission Date : {{i.submission_date}}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-6">
+                <h1 class="my-3 text-white" style="font-weight: bold;">Donor's Feedback</h1>
+                {% for i in donor_feed %}
+                    {% if i.plasma_bank == user %}
+                        <div class="card my-4 mx-3">
+                            <div class="card-header" style="font-weight: bold;">{{i.ftitle|title}}</div>
+                            <div class="card-body">
+                                <p>Rating : {{i.review|title}}</p>
+                                <p>Feedback : {{i.feedback}} </p>
+                                <p>Submission Date : {{i.submission_date}}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

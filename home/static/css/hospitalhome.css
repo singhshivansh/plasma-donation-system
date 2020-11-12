@@ -1,0 +1,18 @@
+
+.plasma-card{
+    background-color: lightgreen;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.card  :hover{
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    letter-spacing: 2px;
+    size: 50px;
+    margin-right: -20px;
+    margin-left: -20px;
+    transition-duration: 0.8s;
+}
+
